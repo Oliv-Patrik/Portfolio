@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SigilRune } from './SigilRune';
-import { ArrowDown, Sparkles, Terminal, BarChart2, ShieldCheck, ExternalLink, Code2 } from 'lucide-react';
+import { ArrowDown, Sparkles, Terminal, BarChart2, ShieldCheck, ExternalLink, Code2, FileDown } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const [runeInteractiveAngle, setRuneInteractiveAngle] = useState(0);
@@ -14,25 +14,38 @@ export const Hero: React.FC = () => {
       id="hero"
       className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden"
     >
-      {/* Precision martial arts flow lines SVG overlay */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-45"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#8F5FE8" stopOpacity="0.4" />
-            <stop offset="50%" stopColor="#C9B7EA" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#3D2472" stopOpacity="0.05" />
-          </linearGradient>
-        </defs>
-        {/* Subtle horizontal alignment threads */}
-        <line x1="0" y1="180" x2="100%" y2="180" stroke="#E5DAF6" strokeWidth="1" strokeDasharray="3 9" />
-        <line x1="0" y1="420" x2="100%" y2="420" stroke="#E5DAF6" strokeWidth="0.8" strokeDasharray="2 12" />
-        {/* Grimoire coordinate marks */}
-        <circle cx="90%" cy="180" r="4" fill="#9A75DC" opacity="0.6" />
-        <circle cx="10%" cy="420" r="4" fill="#9A75DC" opacity="0.6" />
-      </svg>
+      {/* Subtle Calligraphic Ensō Circle Overlay (Martial Arts Zen Mind & Precision) */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden" aria-hidden="true">
+        <svg
+          className="w-[520px] h-[520px] sm:w-[680px] sm:h-[680px] lg:w-[780px] lg:h-[780px] -translate-y-8 lg:-translate-y-12 opacity-[0.08] text-[#6A3EB2]"
+          viewBox="0 0 400 400"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="ensoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#7C4DC4" stopOpacity="0.9" />
+              <stop offset="45%" stopColor="#8F5FE8" stopOpacity="0.7" />
+              <stop offset="80%" stopColor="#5E2B97" stopOpacity="0.85" />
+              <stop offset="100%" stopColor="#3B1768" stopOpacity="0.4" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M 215 48 
+               C 305 52, 362 122, 358 210 
+               C 354 298, 288 358, 200 355 
+               C 112 352, 48 285, 45 198 
+               C 42 120, 95 62, 172 49 
+               C 185 47, 198 48, 204 53
+               C 192 63, 148 76, 115 118
+               C 80 162, 78 228, 118 278
+               C 158 328, 230 338, 285 304
+               C 340 270, 350 198, 320 142
+               C 294 92, 238 65, 185 64 Z"
+            fill="url(#ensoGrad)"
+          />
+        </svg>
+      </div>
 
       <div className="max-w-6xl mx-auto px-6 sm:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -65,23 +78,11 @@ export const Hero: React.FC = () => {
 
             {/* Concise Mission / Grimoire Philosophy */}
             <p className="text-[16px] sm:text-[17px] text-[#63537D] leading-relaxed max-w-xl font-normal">
-              Merging the computational rigour of <span className="text-[#2C1352] font-semibold">Backend Engineering</span> with the sharp clarity of <span className="text-[#2C1352] font-semibold">Business Intelligence</span>. Every line of code and SQL query is executed like a deliberate martial kata—clean, deterministic, and built without wasted motion.
+              Merging the sharp analytical clarity of <span className="text-[#2C1352] font-semibold">Business Intelligence</span> (Power BI, DAX, SQL) with the computational rigour of <span className="text-[#2C1352] font-semibold">Backend Engineering</span> (Python, robust APIs). Every data model and line of code is executed like a deliberate martial kata—clean, deterministic, and built without wasted motion.
             </p>
 
-            {/* Dual Discipline Pillars */}
+            {/* Dual Discipline Pillars - Business Intelligence Prioritized */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2 max-w-xl">
-              <div className="p-3.5 rounded-2xl bg-white/70 backdrop-blur-sm border border-[#E7DCF6] hover:border-[#BF9FF3] transition-all group shadow-xs">
-                <div className="flex items-center gap-2.5 mb-1.5 text-[#321759]">
-                  <div className="p-1.5 rounded-lg bg-[#F2EAFD] text-[#6B3BB8] group-hover:scale-105 transition-transform">
-                    <Terminal className="w-4 h-4" />
-                  </div>
-                  <span className="font-semibold text-sm">Backend Systems</span>
-                </div>
-                <p className="text-xs text-[#6F6088] leading-relaxed">
-                  Python, RESTful APIs, robust microservices &amp; clean architectures designed for stability.
-                </p>
-              </div>
-
               <div className="p-3.5 rounded-2xl bg-white/70 backdrop-blur-sm border border-[#E7DCF6] hover:border-[#BF9FF3] transition-all group shadow-xs">
                 <div className="flex items-center gap-2.5 mb-1.5 text-[#321759]">
                   <div className="p-1.5 rounded-lg bg-[#F2EAFD] text-[#6B3BB8] group-hover:scale-105 transition-transform">
@@ -93,21 +94,46 @@ export const Hero: React.FC = () => {
                   SQL, Power BI &amp; DAX modeling delivering real-time actionable executive telemetry.
                 </p>
               </div>
+
+              <div className="p-3.5 rounded-2xl bg-white/70 backdrop-blur-sm border border-[#E7DCF6] hover:border-[#BF9FF3] transition-all group shadow-xs">
+                <div className="flex items-center gap-2.5 mb-1.5 text-[#321759]">
+                  <div className="p-1.5 rounded-lg bg-[#F2EAFD] text-[#6B3BB8] group-hover:scale-105 transition-transform">
+                    <Terminal className="w-4 h-4" />
+                  </div>
+                  <span className="font-semibold text-sm">Backend Systems</span>
+                </div>
+                <p className="text-xs text-[#6F6088] leading-relaxed">
+                  Python, RESTful APIs, robust microservices &amp; clean architectures designed for stability.
+                </p>
+              </div>
             </div>
 
             {/* Actions & Anchors */}
-            <div className="flex flex-wrap items-center gap-4 pt-3">
+            <div className="flex flex-wrap items-center gap-3.5 pt-3">
               <a
                 href="#projects"
-                className="px-7 py-3.5 rounded-full bg-[#2C1150] hover:bg-[#482084] text-white text-[14.5px] font-medium shadow-[0_12px_28px_-8px_rgba(44,17,80,0.35)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2"
+                className="px-6 sm:px-7 py-3.5 rounded-full bg-[#2C1150] hover:bg-[#482084] text-white text-[14px] sm:text-[14.5px] font-medium shadow-[0_12px_28px_-8px_rgba(44,17,80,0.35)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2"
               >
                 <span>Explore Selected Projects</span>
                 <ArrowDown className="w-4 h-4 text-[#DAC4FA]" />
               </a>
 
+              {/* Download CV button */}
+              <a
+                href="/cv-patrik-de-oliveira.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="cv-patrik-de-oliveira.pdf"
+                className="px-5 sm:px-6 py-3.5 rounded-full bg-[#3D2168] hover:bg-[#522E8A] text-white text-[14px] sm:text-[14.5px] font-medium shadow-[0_12px_28px_-8px_rgba(61,33,104,0.25)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 border border-[#6B3EB5]"
+                title="Download Curriculum Vitae (PDF)"
+              >
+                <FileDown className="w-4 h-4 text-[#D8C2FB]" />
+                <span>Download CV</span>
+              </a>
+
               <a
                 href="#contact"
-                className="px-6 py-3.5 rounded-full bg-white/80 hover:bg-white text-[#341B5C] border border-[#D8C7F3] text-[14.5px] font-medium hover:shadow-sm transition-all flex items-center gap-2"
+                className="px-5 sm:px-6 py-3.5 rounded-full bg-white/80 hover:bg-white text-[#341B5C] border border-[#D8C7F3] text-[14px] sm:text-[14.5px] font-medium hover:shadow-sm transition-all flex items-center gap-2"
               >
                 <span>Initiate Contact</span>
                 <ExternalLink className="w-3.5 h-3.5 opacity-60" />

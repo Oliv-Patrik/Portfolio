@@ -1,0 +1,27 @@
+# Netlify configuration
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Allow direct static serving of PDF without rewrite to index.html
+[[redirects]]
+  from = "/cv-patrik-de-oliveira.pdf"
+  to = "/cv-patrik-de-oliveira.pdf"
+  status = 200
+
+# Client-side SPA fallback for application routes only
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/cv-patrik-de-oliveira.pdf"
+  [headers.values]
+    Content-Type = "application/pdf"
+    Content-Disposition = "inline; filename=\"cv-patrik-de-oliveira.pdf\""
+
+[[headers]]
+  for = "/*.pdf"
+  [headers.values]
+    Content-Type = "application/pdf"

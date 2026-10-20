@@ -22,6 +22,8 @@ export interface EducationItem {
   id: string;
   degree: string;
   institution: string;
+  issuer?: string;
+  certificateUrl?: string;
   period: string;
   status: string;
   description: string;

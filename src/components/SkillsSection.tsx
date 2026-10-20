@@ -17,8 +17,80 @@ import {
   Workflow
 } from 'lucide-react';
 
+interface KarateBelt {
+  name: string;
+  color: string;
+  textColor: string;
+  borderColor: string;
+}
+
+const getKarateBelt = (proficiency: number): KarateBelt => {
+  if (proficiency >= 95) {
+    return {
+      name: 'Faixa Preta',
+      color: '#000000',
+      textColor: '#FFFFFF',
+      borderColor: '#262626',
+    };
+  }
+  if (proficiency >= 93) {
+    return {
+      name: 'Faixa Marrom',
+      color: '#5C3A21',
+      textColor: '#FFFFFF',
+      borderColor: '#4A2E1A',
+    };
+  }
+  if (proficiency >= 89) {
+    return {
+      name: 'Faixa Roxa',
+      color: '#6A0DAD',
+      textColor: '#FFFFFF',
+      borderColor: '#550A8C',
+    };
+  }
+  if (proficiency >= 85) {
+    return {
+      name: 'Faixa Azul',
+      color: '#1E3A8A',
+      textColor: '#FFFFFF',
+      borderColor: '#172E6E',
+    };
+  }
+  if (proficiency >= 80) {
+    return {
+      name: 'Faixa Verde',
+      color: '#2E7D32',
+      textColor: '#FFFFFF',
+      borderColor: '#236327',
+    };
+  }
+  if (proficiency >= 75) {
+    return {
+      name: 'Faixa Laranja',
+      color: '#E67E22',
+      textColor: '#FFFFFF',
+      borderColor: '#C86815',
+    };
+  }
+  if (proficiency >= 70) {
+    return {
+      name: 'Faixa Amarela',
+      color: '#F1C40F',
+      textColor: '#1F1432',
+      borderColor: '#D4AC0D',
+    };
+  }
+  return {
+    name: 'Faixa Branca',
+    color: '#F5F5F5',
+    textColor: '#1F1432',
+    borderColor: '#CCCCCC',
+  };
+};
+
 export const SkillsSection: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<'all' | 'backend' | 'bi'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'backend' | 'bi'>('bi');
 
   const backendSkills = [
     {
@@ -259,59 +331,89 @@ export const SkillsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Infographic Detail Columns: Backend (Python/APIs) & Business Intelligence (SQL/Power BI/DAX) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        {/* Infographic Detail Columns: Business Intelligence (SQL/Power BI/DAX) & Backend Systems (Python/APIs) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
 
-          {/* BACKEND COLUMN */}
-          {(activeCategory === 'all' || activeCategory === 'backend') && (
-            <div className="p-7 sm:p-8 rounded-3xl bg-white border border-[#DFCFF5] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)] flex flex-col justify-between space-y-6">
-              
-              {/* Header */}
-              <div>
-                <div className="flex items-center justify-between pb-4 border-b border-[#F0E6FB] mb-5">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#F2EAFD] border border-[#DFCFF5] flex items-center justify-center text-[#6A3EB2]">
-                      <Terminal className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-serif-heading text-2xl font-semibold text-[#1F1432]">
-                        Backend Systems
-                      </h4>
-                      <p className="text-xs font-mono text-[#7C6E93]">
-                        Python · REST APIs · PostgreSQL · Scalability
-                      </p>
-                    </div>
+          {/* BUSINESS INTELLIGENCE COLUMN - First in DOM */}
+          <div className={`p-7 sm:p-8 rounded-3xl bg-white border flex flex-col justify-between space-y-6 transition-all duration-300 ${
+            activeCategory === 'bi'
+              ? 'border-[#7C4DC4] shadow-[0_16px_40px_-16px_rgba(124,77,196,0.22)] ring-2 ring-[#7C4DC4]/20'
+              : 'border-[#DFCFF5] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)]'
+          }`}>
+            
+            {/* Header */}
+            <div>
+              <div className="flex items-center justify-between pb-4 border-b border-[#F0E6FB] mb-5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#F2EAFD] border border-[#DFCFF5] flex items-center justify-center text-[#6A3EB2]">
+                    <BarChart3 className="w-5 h-5" />
                   </div>
-
-                  <span className="px-3 py-1 rounded-full bg-[#FAF5FE] border border-[#E0D0F7] text-[11px] font-mono text-[#6A3EB2] font-semibold">
-                    FORM I
-                  </span>
+                  <div>
+                    <h4 className="font-serif-heading text-2xl font-semibold text-[#1F1432]">
+                      Business Intelligence
+                    </h4>
+                    <p className="text-xs font-mono text-[#7C6E93]">
+                      SQL · Power BI · DAX · Data Modeling
+                    </p>
+                  </div>
                 </div>
 
-                <p className="text-sm text-[#5B4A72] leading-relaxed mb-6">
-                  Constructing reliable, high-throughput backend services designed with clean object boundaries, strict request validation, and deterministic execution pipelines.
-                </p>
+                <span className="px-3 py-1 rounded-full bg-[#FAF5FE] border border-[#E0D0F7] text-[11px] font-mono text-[#6A3EB2] font-semibold">
+                  FORM I
+                </span>
+              </div>
 
-                {/* Progress Infographic Rows */}
-                <div className="space-y-4">
-                  {backendSkills.map((skill) => (
+              <p className="text-sm text-[#5B4A72] leading-relaxed mb-6">
+                Transforming chaotic transactional records into pristine visual telemetry. Expert in calculating multi-layered filter contexts in DAX and architecting scalable Star Schemas.
+              </p>
+
+              {/* Progress Infographic Rows */}
+              <div className="space-y-4">
+                {biSkills.map((skill) => {
+                  const belt = getKarateBelt(skill.proficiency);
+                  return (
                     <div key={skill.name} className="p-3.5 rounded-2xl bg-[#FAF8FD] border border-[#E9DEF7] space-y-2">
                       <div className="flex items-center justify-between text-xs">
                         <span className="font-semibold text-[#291349] font-mono flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#7C4DC4]" />
+                          <span
+                            className="w-1.5 h-1.5 rounded-full"
+                            style={{ backgroundColor: belt.color }}
+                          />
                           {skill.name}
                         </span>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[11px] font-mono text-[#75648E]">{skill.level}</span>
-                          <span className="font-mono font-bold text-[#2A134D] text-xs">{skill.proficiency}%</span>
+                        <div className="flex items-center gap-1.5">
+                          {/* Tarja horizontal estilo faixa de karatê */}
+                          <span
+                            className="inline-flex items-center h-2.5 w-5 rounded-[2px] overflow-hidden border border-black/15 shadow-xs relative shrink-0"
+                            style={{ backgroundColor: belt.color }}
+                            title={`${belt.name} (Karatê Shotokan)`}
+                            aria-hidden="true"
+                          >
+                            <span
+                              className="absolute right-0 top-0 bottom-0 w-1.5"
+                              style={{ backgroundColor: belt.color === '#000000' ? '#FFFFFF' : '#000000' }}
+                            />
+                          </span>
+
+                          {/* Selo/chip com o nome da faixa */}
+                          <span
+                            className="px-2 py-0.5 rounded-md text-[10.5px] font-mono font-semibold tracking-tight shadow-xs border inline-flex items-center"
+                            style={{
+                              backgroundColor: belt.color,
+                              color: belt.textColor,
+                              borderColor: belt.borderColor,
+                            }}
+                          >
+                            {belt.name}
+                          </span>
                         </div>
                       </div>
 
-                      {/* Smooth progress bar */}
+                      {/* Smooth progress bar com a cor da faixa */}
                       <div className="w-full h-1.5 bg-[#E8DCF8] rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-gradient-to-r from-[#6A3EB2] to-[#9A6BEB] rounded-full transition-all duration-700"
-                          style={{ width: `${skill.proficiency}%` }}
+                          className="h-full rounded-full transition-all duration-700"
+                          style={{ width: `${skill.proficiency}%`, backgroundColor: belt.color }}
                         />
                       </div>
 
@@ -319,87 +421,117 @@ export const SkillsSection: React.FC = () => {
                         {skill.details}
                       </div>
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
               </div>
-
-              {/* Backend Pipeline Flow Diagram (Infographic) */}
-              <div className="p-4 rounded-2xl bg-[#1C112E] text-[#E8DCFD] border border-[#3E2568] space-y-2.5">
-                <div className="flex items-center justify-between text-[11px] font-mono text-[#B19ECE]">
-                  <span className="flex items-center gap-1.5">
-                    <Workflow className="w-3.5 h-3.5 text-[#9A6BEB]" />
-                    <span>DETERMINISTIC INGESTION FLOW</span>
-                  </span>
-                  <span className="text-emerald-400">LATENCY &lt; 20ms</span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] font-mono text-center gap-1">
-                  <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
-                    HTTP Payload
-                  </div>
-                  <span className="text-[#8F5FE8]">→</span>
-                  <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
-                    FastAPI Kata
-                  </div>
-                  <span className="text-[#8F5FE8]">→</span>
-                  <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
-                    SQL Store
-                  </div>
-                </div>
-              </div>
-
             </div>
-          )}
 
-          {/* BUSINESS INTELLIGENCE COLUMN */}
-          {(activeCategory === 'all' || activeCategory === 'bi') && (
-            <div className="p-7 sm:p-8 rounded-3xl bg-white border border-[#DFCFF5] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)] flex flex-col justify-between space-y-6">
-              
-              {/* Header */}
-              <div>
-                <div className="flex items-center justify-between pb-4 border-b border-[#F0E6FB] mb-5">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#F2EAFD] border border-[#DFCFF5] flex items-center justify-center text-[#6A3EB2]">
-                      <BarChart3 className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-serif-heading text-2xl font-semibold text-[#1F1432]">
-                        Business Intelligence
-                      </h4>
-                      <p className="text-xs font-mono text-[#7C6E93]">
-                        SQL · Power BI · DAX · Data Modeling
-                      </p>
-                    </div>
+            {/* BI Tabular Telemetry Flow Diagram (Infographic) */}
+            <div className="p-4 rounded-2xl bg-[#1C112E] text-[#E8DCFD] border border-[#3E2568] space-y-2.5">
+              <div className="flex items-center justify-between text-[11px] font-mono text-[#B19ECE]">
+                <span className="flex items-center gap-1.5">
+                  <Activity className="w-3.5 h-3.5 text-[#9A6BEB]" />
+                  <span>TABULAR MODELLING PIPELINE</span>
+                </span>
+                <span className="text-emerald-400">VERTIPAQ OPTIMIZED</span>
+              </div>
+              <div className="flex items-center justify-between text-[11px] font-mono text-center gap-1">
+                <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
+                  Data Warehouse
+                </div>
+                <span className="text-[#8F5FE8]">→</span>
+                <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
+                  Star Schema
+                </div>
+                <span className="text-[#8F5FE8]">→</span>
+                <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
+                  DAX Measure
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* BACKEND SYSTEMS COLUMN - Second in DOM */}
+          <div className={`p-7 sm:p-8 rounded-3xl bg-white border flex flex-col justify-between space-y-6 transition-all duration-300 ${
+            activeCategory === 'backend'
+              ? 'border-[#7C4DC4] shadow-[0_16px_40px_-16px_rgba(124,77,196,0.22)] ring-2 ring-[#7C4DC4]/20'
+              : 'border-[#DFCFF5] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)]'
+          }`}>
+            
+            {/* Header */}
+            <div>
+              <div className="flex items-center justify-between pb-4 border-b border-[#F0E6FB] mb-5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#F2EAFD] border border-[#DFCFF5] flex items-center justify-center text-[#6A3EB2]">
+                    <Terminal className="w-5 h-5" />
                   </div>
-
-                  <span className="px-3 py-1 rounded-full bg-[#FAF5FE] border border-[#E0D0F7] text-[11px] font-mono text-[#6A3EB2] font-semibold">
-                    FORM II
-                  </span>
+                  <div>
+                    <h4 className="font-serif-heading text-2xl font-semibold text-[#1F1432]">
+                      Backend Systems
+                    </h4>
+                    <p className="text-xs font-mono text-[#7C6E93]">
+                      Python · REST APIs · PostgreSQL · Scalability
+                    </p>
+                  </div>
                 </div>
 
-                <p className="text-sm text-[#5B4A72] leading-relaxed mb-6">
-                  Transforming chaotic transactional records into pristine visual telemetry. Expert in calculating multi-layered filter contexts in DAX and architecting scalable Star Schemas.
-                </p>
+                <span className="px-3 py-1 rounded-full bg-[#FAF5FE] border border-[#E0D0F7] text-[11px] font-mono text-[#6A3EB2] font-semibold">
+                  FORM II
+                </span>
+              </div>
 
-                {/* Progress Infographic Rows */}
-                <div className="space-y-4">
-                  {biSkills.map((skill) => (
+              <p className="text-sm text-[#5B4A72] leading-relaxed mb-6">
+                Constructing reliable, high-throughput backend services designed with clean object boundaries, strict request validation, and deterministic execution pipelines.
+              </p>
+
+              {/* Progress Infographic Rows */}
+              <div className="space-y-4">
+                {backendSkills.map((skill) => {
+                  const belt = getKarateBelt(skill.proficiency);
+                  return (
                     <div key={skill.name} className="p-3.5 rounded-2xl bg-[#FAF8FD] border border-[#E9DEF7] space-y-2">
                       <div className="flex items-center justify-between text-xs">
                         <span className="font-semibold text-[#291349] font-mono flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#7C4DC4]" />
+                          <span
+                            className="w-1.5 h-1.5 rounded-full"
+                            style={{ backgroundColor: belt.color }}
+                          />
                           {skill.name}
                         </span>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[11px] font-mono text-[#75648E]">{skill.level}</span>
-                          <span className="font-mono font-bold text-[#2A134D] text-xs">{skill.proficiency}%</span>
+                        <div className="flex items-center gap-1.5">
+                          {/* Tarja horizontal estilo faixa de karatê */}
+                          <span
+                            className="inline-flex items-center h-2.5 w-5 rounded-[2px] overflow-hidden border border-black/15 shadow-xs relative shrink-0"
+                            style={{ backgroundColor: belt.color }}
+                            title={`${belt.name} (Karatê Shotokan)`}
+                            aria-hidden="true"
+                          >
+                            <span
+                              className="absolute right-0 top-0 bottom-0 w-1.5"
+                              style={{ backgroundColor: belt.color === '#000000' ? '#FFFFFF' : '#000000' }}
+                            />
+                          </span>
+
+                          {/* Selo/chip com o nome da faixa */}
+                          <span
+                            className="px-2 py-0.5 rounded-md text-[10.5px] font-mono font-semibold tracking-tight shadow-xs border inline-flex items-center"
+                            style={{
+                              backgroundColor: belt.color,
+                              color: belt.textColor,
+                              borderColor: belt.borderColor,
+                            }}
+                          >
+                            {belt.name}
+                          </span>
                         </div>
                       </div>
 
-                      {/* Smooth progress bar */}
+                      {/* Smooth progress bar com a cor da faixa */}
                       <div className="w-full h-1.5 bg-[#E8DCF8] rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-gradient-to-r from-[#6A3EB2] to-[#9A6BEB] rounded-full transition-all duration-700"
-                          style={{ width: `${skill.proficiency}%` }}
+                          className="h-full rounded-full transition-all duration-700"
+                          style={{ width: `${skill.proficiency}%`, backgroundColor: belt.color }}
                         />
                       </div>
 
@@ -407,36 +539,36 @@ export const SkillsSection: React.FC = () => {
                         {skill.details}
                       </div>
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
               </div>
-
-              {/* BI Tabular Telemetry Flow Diagram (Infographic) */}
-              <div className="p-4 rounded-2xl bg-[#1C112E] text-[#E8DCFD] border border-[#3E2568] space-y-2.5">
-                <div className="flex items-center justify-between text-[11px] font-mono text-[#B19ECE]">
-                  <span className="flex items-center gap-1.5">
-                    <Activity className="w-3.5 h-3.5 text-[#9A6BEB]" />
-                    <span>TABULAR MODELLING PIPELINE</span>
-                  </span>
-                  <span className="text-emerald-400">VERTIPAQ OPTIMIZED</span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] font-mono text-center gap-1">
-                  <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
-                    Data Warehouse
-                  </div>
-                  <span className="text-[#8F5FE8]">→</span>
-                  <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
-                    Star Schema
-                  </div>
-                  <span className="text-[#8F5FE8]">→</span>
-                  <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
-                    DAX Measure
-                  </div>
-                </div>
-              </div>
-
             </div>
-          )}
+
+            {/* Backend Pipeline Flow Diagram (Infographic) */}
+            <div className="p-4 rounded-2xl bg-[#1C112E] text-[#E8DCFD] border border-[#3E2568] space-y-2.5">
+              <div className="flex items-center justify-between text-[11px] font-mono text-[#B19ECE]">
+                <span className="flex items-center gap-1.5">
+                  <Workflow className="w-3.5 h-3.5 text-[#9A6BEB]" />
+                  <span>DETERMINISTIC INGESTION FLOW</span>
+                </span>
+                <span className="text-emerald-400">LATENCY &lt; 20ms</span>
+              </div>
+              <div className="flex items-center justify-between text-[11px] font-mono text-center gap-1">
+                <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
+                  HTTP Payload
+                </div>
+                <span className="text-[#8F5FE8]">→</span>
+                <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
+                  FastAPI Kata
+                </div>
+                <span className="text-[#8F5FE8]">→</span>
+                <div className="flex-1 p-1.5 rounded bg-[#2B1849] border border-[#4D2D82]">
+                  SQL Store
+                </div>
+              </div>
+            </div>
+
+          </div>
 
         </div>
 

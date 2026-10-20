@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SigilRune } from './SigilRune';
+import { HankoSeal } from './HankoSeal';
 import { ArrowUpRight, Menu, X, Mail } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -37,8 +37,8 @@ export const Navbar: React.FC = () => {
           href="#"
           className="group flex items-center gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7C4DC4] rounded-lg p-1"
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#F1E8FC] to-[#E3D2F8] border border-[#D5C2F3] flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm">
-            <SigilRune variant="compass" size={22} />
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FAF5FE] to-[#F0E4FB] border border-[#D5C2F3] flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm">
+            <HankoSeal size={24} />
           </div>
           <div>
             <span className="font-serif-heading font-semibold text-[17px] text-[#241738] tracking-tight group-hover:text-[#673AB7] transition-colors block leading-tight">

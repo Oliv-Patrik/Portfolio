@@ -52,7 +52,7 @@ export const ExperienceSection: React.FC = () => {
             <div className="flex items-center gap-3 mb-3">
               <SigilRune variant="kata" size={28} />
               <span className="font-mono text-xs uppercase tracking-widest text-[#794DBA] font-semibold">
-                Chapter IV · Battle-Tested Praxis
+                Chapter V · Battle-Tested Praxis
               </span>
             </div>
             <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1F1432] tracking-tight">

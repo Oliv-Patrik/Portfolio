@@ -182,6 +182,32 @@ export async function syncSessionToDrive(sessionData: StudySessionState): Promis
       }
     },
     {
+      id: 'data-insights',
+      title: 'Data Insights',
+      subtitle: 'Enterprise Business Intelligence & DAX Analytics Suite',
+      category: 'Data & Business Intelligence',
+      description:
+        'A dynamic corporate BI cockpit powered by optimized DAX calculations, dimensional modeling, and interactive visual telemetry. Replaces opaque spreadsheets with live visual intelligence.',
+      longDescription:
+        'Data Insights showcases deep Power BI and DAX engineering capability. Utilizing customized star-schema architectures and highly optimized VertiPaq tabular calculations, this suite provides executive-level variance tracking, customer retention cohorts, and time-intelligence projections in milliseconds.',
+      tags: ['Power BI', 'Advanced DAX', 'SQL', 'Dimensional Modeling', 'ETL'],
+      metrics: [
+        { label: 'Query Performance', value: '< 250ms' },
+        { label: 'Data Compression', value: '8.4x VertiPaq' }
+      ],
+      accentColor: '#451D7E',
+      interfaceType: 'bi-dashboard',
+      codeSnippet: {
+        lang: 'dax',
+        code: `Gross_Margin_Variance_% := 
+DIVIDE(
+    [Actual Gross Margin] - [Budgeted Gross Margin],
+    [Budgeted Gross Margin],
+    BLANK()
+)`
+      }
+    },
+    {
       id: 'monitor-agro',
       title: 'Monitor-Agro',
       subtitle: 'Smart AgTech Telemetry & IoT Sensor Architecture',
@@ -197,6 +223,7 @@ export async function syncSessionToDrive(sessionData: StudySessionState): Promis
       ],
       accentColor: '#6B35BA',
       interfaceType: 'agro',
+      repoUrl: 'https://github.com/Oliv-Patrik/monitor-agro',
       codeSnippet: {
         lang: 'python',
         code: `class AgroTelemetryService:
@@ -223,6 +250,7 @@ export async function syncSessionToDrive(sessionData: StudySessionState): Promis
       ],
       accentColor: '#7C4DC4',
       interfaceType: 'chat',
+      repoUrl: 'https://github.com/Oliv-Patrik/conversafina',
       codeSnippet: {
         lang: 'python',
         code: `@router.post("/chat/query")
@@ -256,32 +284,6 @@ async def handle_conversafina_turn(intent_req: IntentRequest):
   return { co2Kg: grossKgCo2, treesSaved: grossKgCo2 / TREE_ABSORPTION_FACTOR };
 }`
       }
-    },
-    {
-      id: 'data-insights',
-      title: 'Data Insights',
-      subtitle: 'Enterprise Business Intelligence & DAX Analytics Suite',
-      category: 'Data & Business Intelligence',
-      description:
-        'A dynamic corporate BI cockpit powered by optimized DAX calculations, dimensional modeling, and interactive visual telemetry. Replaces opaque spreadsheets with live visual intelligence.',
-      longDescription:
-        'Data Insights showcases deep Power BI and DAX engineering capability. Utilizing customized star-schema architectures and highly optimized VertiPaq tabular calculations, this suite provides executive-level variance tracking, customer retention cohorts, and time-intelligence projections in milliseconds.',
-      tags: ['Power BI', 'Advanced DAX', 'SQL', 'Dimensional Modeling', 'ETL'],
-      metrics: [
-        { label: 'Query Performance', value: '< 250ms' },
-        { label: 'Data Compression', value: '8.4x VertiPaq' }
-      ],
-      accentColor: '#451D7E',
-      interfaceType: 'bi-dashboard',
-      codeSnippet: {
-        lang: 'dax',
-        code: `Gross_Margin_Variance_% := 
-DIVIDE(
-    [Actual Gross Margin] - [Budgeted Gross Margin],
-    [Budgeted Gross Margin],
-    BLANK()
-)`
-      }
     }
   ];
 
@@ -295,7 +297,7 @@ DIVIDE(
             <div className="flex items-center gap-3 mb-3">
               <SigilRune variant="telemetry" size={28} />
               <span className="font-mono text-xs uppercase tracking-widest text-[#794DBA] font-semibold">
-                Chapter III · Practical Grimoire
+                Chapter IV · Practical Grimoire
               </span>
             </div>
             <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1F1432] tracking-tight">
@@ -625,363 +627,12 @@ DIVIDE(
         {/* =========================================================================
             SPECIALIZED ENGINEERING SYSTEMS (2x2 Grid)
             Rendered when filter is 'all', 'backend', or 'bi'
+            Re-ordered for BI/Data priority: Data Insights & Monitor-Agro before ConversaFina & Calculadora EcoTrip
            ========================================================================= */}
         {(filterCategory === 'all' || filterCategory === 'backend' || filterCategory === 'bi') && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
 
-            {/* CARD 1: Monitor-Agro */}
-            {(filterCategory === 'all' || filterCategory === 'backend') && (
-              <div className="group rounded-3xl bg-white border border-[#DFCFF5] hover:border-[#B58FF2] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)] hover:shadow-[0_24px_60px_-15px_rgba(124,77,196,0.24)] hover:scale-[1.018] hover:-translate-y-1.5 transition-all duration-300 ease-out flex flex-col overflow-hidden relative">
-                {/* Top illuminated glow runner on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#8F5FE8]/0 to-transparent group-hover:via-[#8F5FE8]/80 transition-all duration-500 z-10" />
-                
-                {/* Sleek App Interface Mockup: Monitor-Agro */}
-                <div className="bg-gradient-to-b from-[#FAF5FF] to-[#F1E8FB] border-b border-[#E9DEF7] p-5">
-                  <div className="flex items-center justify-between pb-3 border-b border-[#E7D6F8] mb-4">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#E57373]" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#FFB74D]" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#81C784]" />
-                      <span className="font-mono text-xs text-[#5D379B] ml-2 font-medium">agro.telemetry.io/sensors</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E9DDFC] text-[11px] font-mono text-[#542B94]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      <span>SECTOR_07 LIVE</span>
-                    </div>
-                  </div>
-
-                  {/* Sensor Telemetry Widget Grid */}
-                  <div className="grid grid-cols-3 gap-2.5 mb-3">
-                    <div className="p-3 rounded-xl bg-white/90 border border-[#E8DEF8] shadow-2xs">
-                      <div className="flex items-center gap-1.5 text-[11px] text-[#7A6994] font-medium">
-                        <Droplets className="w-3 h-3 text-[#7C4DC4]" />
-                        <span>Moisture</span>
-                      </div>
-                      <div className="text-base font-bold text-[#2A144E] mt-1 font-mono">68.4%</div>
-                      <div className="text-[10px] text-emerald-600 font-medium">Optimal Band</div>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-white/90 border border-[#E8DEF8] shadow-2xs">
-                      <div className="flex items-center gap-1.5 text-[11px] text-[#7A6994] font-medium">
-                        <Cpu className="w-3 h-3 text-[#7C4DC4]" />
-                        <span>NPK Ratio</span>
-                      </div>
-                      <div className="text-base font-bold text-[#2A144E] mt-1 font-mono">14:8:12</div>
-                      <div className="text-[10px] text-emerald-600 font-medium">Calibrated</div>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-white/90 border border-[#E8DEF8] shadow-2xs">
-                      <div className="flex items-center gap-1.5 text-[11px] text-[#7A6994] font-medium">
-                        <Wind className="w-3 h-3 text-[#7C4DC4]" />
-                        <span>Soil Temp</span>
-                      </div>
-                      <div className="text-base font-bold text-[#2A144E] mt-1 font-mono">22.8°C</div>
-                      <div className="text-[10px] text-emerald-600 font-medium">+0.4° Variance</div>
-                    </div>
-                  </div>
-
-                  {/* Sleek SVG Sensor Trend Line */}
-                  <div className="p-3 rounded-xl bg-white/95 border border-[#E8DEF8] shadow-2xs">
-                    <div className="flex items-center justify-between text-[11px] text-[#695A82] mb-2 font-mono">
-                      <span>SOIL MOISTURE TIME-SERIES (24H STREAM)</span>
-                      <span className="text-[#7C4DC4] font-semibold">PYTHON ASYNC INGEST</span>
-                    </div>
-                    <svg viewBox="0 0 380 75" className="w-full h-16">
-                      <defs>
-                        <linearGradient id="agroGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#8F5FE8" stopOpacity="0.35" />
-                          <stop offset="100%" stopColor="#8F5FE8" stopOpacity="0.0" />
-                        </linearGradient>
-                      </defs>
-                      <polygon
-                        points="0,55 35,48 70,52 110,38 150,42 190,26 230,30 270,18 310,24 350,14 380,10 380,75 0,75"
-                        fill="url(#agroGrad)"
-                      />
-                      <polyline
-                        points="0,55 35,48 70,52 110,38 150,42 190,26 230,30 270,18 310,24 350,14 380,10"
-                        fill="none"
-                        stroke="#7C4DC4"
-                        strokeWidth="2.2"
-                        strokeLinecap="round"
-                      />
-                      <circle cx="380" cy="10" r="3.5" fill="#3D2472" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="p-7 flex-1 flex flex-col justify-between space-y-5">
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-mono font-semibold text-[#7C4DC4] uppercase tracking-wider">
-                        Smart AgTech &amp; Python Backend
-                      </span>
-                      <Sprout className="w-4 h-4 text-[#7C4DC4]" />
-                    </div>
-                    <h3 className="font-serif-heading text-2xl font-semibold text-[#1F1432]">
-                      Monitor-Agro
-                    </h3>
-                    <p className="text-[14.5px] text-[#5C4C74] mt-2 leading-relaxed">
-                      Real-time agronomic telemetry platform with asynchronous Python microservices, IoT ingestion pipelines, and predictive soil health indexes.
-                    </p>
-                  </div>
-
-                  {/* Tags & Explore Button */}
-                  <div className="space-y-4 pt-3 border-t border-[#F0E6FB]">
-                    <div className="flex flex-wrap gap-1.5">
-                      {['Python', 'FastAPI', 'IoT Stream', 'PostgreSQL'].map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-0.5 rounded-full bg-[#FAF5FE] border border-[#E3D4F7] text-[11px] font-mono text-[#583391]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => setSelectedProject(projects[1])}
-                      className="w-full py-2.5 px-4 rounded-xl bg-[#FAF5FE] hover:bg-[#F2E8FC] border border-[#DFCFF5] text-[#34185E] font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                    >
-                      <span>Inspect System Architecture</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-            )}
-
-            {/* CARD 2: ConversaFina */}
-            {(filterCategory === 'all' || filterCategory === 'backend') && (
-              <div className="group rounded-3xl bg-white border border-[#DFCFF5] hover:border-[#B58FF2] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)] hover:shadow-[0_24px_60px_-15px_rgba(124,77,196,0.24)] hover:scale-[1.018] hover:-translate-y-1.5 transition-all duration-300 ease-out flex flex-col overflow-hidden relative">
-                {/* Top illuminated glow runner on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#8F5FE8]/0 to-transparent group-hover:via-[#8F5FE8]/80 transition-all duration-500 z-10" />
-                
-                {/* Sleek App Interface Mockup: ConversaFina */}
-                <div className="bg-gradient-to-b from-[#FAF5FF] to-[#F1E8FB] border-b border-[#E9DEF7] p-5">
-                  <div className="flex items-center justify-between pb-3 border-b border-[#E7D6F8] mb-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-lg bg-[#3D2472] text-white flex items-center justify-center">
-                        <SigilRune variant="minimal" size={14} />
-                      </div>
-                      <span className="font-mono text-xs text-[#5D379B] font-semibold">ConversaFina // AI Agent</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setChatScenario((prev) => (prev === 0 ? 1 : 0))}
-                        className="px-2.5 py-0.5 rounded-full bg-[#E5D5F9] hover:bg-[#D9C4F5] text-[10.5px] font-mono text-[#4A2487] transition-colors cursor-pointer"
-                      >
-                        Cycle Prompt
-                      </button>
-                      <span className="text-[11px] font-mono text-[#7B6D94]">42 tok/s</span>
-                    </div>
-                  </div>
-
-                  {/* Chat Message Flow */}
-                  <div className="space-y-2.5 min-h-[148px] flex flex-col justify-end">
-                    {/* User Message */}
-                    <div className="flex justify-end">
-                      <div className="max-w-[85%] p-2.5 rounded-2xl rounded-tr-xs bg-[#3E2473] text-white text-xs leading-relaxed shadow-xs">
-                        {chatScenarios[chatScenario].user}
-                      </div>
-                    </div>
-
-                    {/* Assistant Response with Grimoire Tag */}
-                    <div className="flex justify-start items-start gap-2">
-                      <div className="w-6 h-6 rounded-full bg-[#8F5FE8] text-white flex items-center justify-center shrink-0 mt-1 shadow-xs">
-                        <Sparkles className="w-3 h-3" />
-                      </div>
-                      <div className="max-w-[88%] p-3 rounded-2xl rounded-tl-xs bg-white border border-[#E5D7F8] text-[#291746] text-xs leading-relaxed shadow-xs">
-                        <div className="text-[10px] font-mono text-[#7C4DC4] font-semibold mb-1">
-                          {chatScenarios[chatScenario].tag}
-                        </div>
-                        {chatScenarios[chatScenario].bot}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Chat Input Bar */}
-                  <div className="mt-3 flex items-center gap-2 p-1.5 rounded-xl bg-white border border-[#E3D3F7]">
-                    <input
-                      type="text"
-                      readOnly
-                      value="Type command or DAX query..."
-                      className="flex-1 bg-transparent px-2 text-xs text-[#8A7B9F] font-mono focus:outline-none"
-                    />
-                    <button
-                      type="button"
-                      className="w-7 h-7 rounded-lg bg-[#7C4DC4] text-white flex items-center justify-center shadow-xs cursor-pointer"
-                    >
-                      <Send className="w-3 h-3" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="p-7 flex-1 flex flex-col justify-between space-y-5">
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-mono font-semibold text-[#7C4DC4] uppercase tracking-wider">
-                        Conversational Engine &amp; APIs
-                      </span>
-                      <MessageSquareCode className="w-4 h-4 text-[#7C4DC4]" />
-                    </div>
-                    <h3 className="font-serif-heading text-2xl font-semibold text-[#1F1432]">
-                      ConversaFina
-                    </h3>
-                    <p className="text-[14.5px] text-[#5C4C74] mt-2 leading-relaxed">
-                      Sleek conversational assistant bridging user queries to backend REST APIs, automated invoice validation, and intelligent data summaries.
-                    </p>
-                  </div>
-
-                  {/* Tags & Explore Button */}
-                  <div className="space-y-4 pt-3 border-t border-[#F0E6FB]">
-                    <div className="flex flex-wrap gap-1.5">
-                      {['Python', 'REST APIs', 'Semantic Parsing', 'WebSockets'].map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-0.5 rounded-full bg-[#FAF5FE] border border-[#E3D4F7] text-[11px] font-mono text-[#583391]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => setSelectedProject(projects[2])}
-                      className="w-full py-2.5 px-4 rounded-xl bg-[#FAF5FE] hover:bg-[#F2E8FC] border border-[#DFCFF5] text-[#34185E] font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                    >
-                      <span>Inspect System Architecture</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-            )}
-
-            {/* CARD 3: Calculadora EcoTrip */}
-            {(filterCategory === 'all' || filterCategory === 'backend') && (
-              <div className="group rounded-3xl bg-white border border-[#DFCFF5] hover:border-[#B58FF2] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)] hover:shadow-[0_24px_60px_-15px_rgba(124,77,196,0.24)] hover:scale-[1.018] hover:-translate-y-1.5 transition-all duration-300 ease-out flex flex-col overflow-hidden relative">
-                {/* Top illuminated glow runner on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#8F5FE8]/0 to-transparent group-hover:via-[#8F5FE8]/80 transition-all duration-500 z-10" />
-                
-                {/* Sleek App Interface Mockup: Calculadora EcoTrip */}
-                <div className="bg-gradient-to-b from-[#FAF5FF] to-[#F1E8FB] border-b border-[#E9DEF7] p-5">
-                  <div className="flex items-center justify-between pb-3 border-b border-[#E7D6F8] mb-4">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#E57373]" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#FFB74D]" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#81C784]" />
-                      <span className="font-mono text-xs text-[#5D379B] ml-2 font-medium">ecotrip.calculator.app</span>
-                    </div>
-                    <span className="text-[11px] font-mono text-[#6A439E] font-semibold">GREEN_ALGO_V2</span>
-                  </div>
-
-                  {/* Interactive Distance & Vehicle Simulator */}
-                  <div className="p-3.5 rounded-2xl bg-white/95 border border-[#E7DCF7] space-y-3.5 shadow-2xs">
-                    {/* Distance Slider */}
-                    <div>
-                      <div className="flex justify-between text-xs font-mono text-[#5A3888] mb-1">
-                        <span>Trip Distance:</span>
-                        <strong className="text-[#2C1450] font-bold">{distanceKm} km</strong>
-                      </div>
-                      <input
-                        type="range"
-                        min="50"
-                        max="1000"
-                        step="10"
-                        value={distanceKm}
-                        onChange={(e) => setDistanceKm(Number(e.target.value))}
-                        className="w-full accent-[#7C4DC4] cursor-pointer"
-                      />
-                    </div>
-
-                    {/* Powertrain Selector */}
-                    <div className="flex items-center justify-between gap-2 text-xs">
-                      {(['combustion', 'hybrid', 'electric'] as const).map((mode) => (
-                        <button
-                          key={mode}
-                          type="button"
-                          onClick={() => setVehicleType(mode)}
-                          className={`flex-1 py-1.5 rounded-lg font-mono text-[11px] uppercase transition-colors cursor-pointer ${
-                            vehicleType === mode
-                              ? 'bg-[#3D2472] text-white font-semibold'
-                              : 'bg-[#F2EAFD] text-[#553386] hover:bg-[#E9DEF9]'
-                          }`}
-                        >
-                          {mode}
-                        </button>
-                      ))}
-                    </div>
-
-                    {/* Live Output Metrics */}
-                    <div className="grid grid-cols-3 gap-2 pt-1">
-                      <div className="p-2 rounded-xl bg-[#FAF6FE] border border-[#ECE0FA] text-center">
-                        <div className="text-[10px] text-[#7C6E94] font-mono">ESTIMATED CO2</div>
-                        <div className="text-sm font-bold text-[#2A144E] font-mono mt-0.5">{totalCo2} kg</div>
-                      </div>
-                      <div className="p-2 rounded-xl bg-[#FAF6FE] border border-[#ECE0FA] text-center">
-                        <div className="text-[10px] text-[#7C6E94] font-mono">SAVINGS</div>
-                        <div className="text-sm font-bold text-emerald-700 font-mono mt-0.5">-{savingsVsCombustion} kg</div>
-                      </div>
-                      <div className="p-2 rounded-xl bg-[#FAF6FE] border border-[#ECE0FA] text-center">
-                        <div className="text-[10px] text-[#7C6E94] font-mono">TREE EQUIV.</div>
-                        <div className="text-sm font-bold text-[#6D3CAE] font-mono mt-0.5">+{treesEquivalent}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="p-7 flex-1 flex flex-col justify-between space-y-5">
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-mono font-semibold text-[#7C4DC4] uppercase tracking-wider">
-                        Carbon Footprint &amp; Route Telemetry
-                      </span>
-                      <Gauge className="w-4 h-4 text-[#7C4DC4]" />
-                    </div>
-                    <h3 className="font-serif-heading text-2xl font-semibold text-[#1F1432]">
-                      Calculadora EcoTrip
-                    </h3>
-                    <p className="text-[14.5px] text-[#5C4C74] mt-2 leading-relaxed">
-                      Interactive carbon estimation engine modeling powertrain efficiencies, multimodal transit alternatives, and quantifiable environmental impact.
-                    </p>
-                  </div>
-
-                  {/* Tags & Explore Button */}
-                  <div className="space-y-4 pt-3 border-t border-[#F0E6FB]">
-                    <div className="flex flex-wrap gap-1.5">
-                      {['TypeScript', 'Algorithms', 'Carbon Modeling', 'Tailwind'].map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-0.5 rounded-full bg-[#FAF5FE] border border-[#E3D4F7] text-[11px] font-mono text-[#583391]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => setSelectedProject(projects[3])}
-                      className="w-full py-2.5 px-4 rounded-xl bg-[#FAF5FE] hover:bg-[#F2E8FC] border border-[#DFCFF5] text-[#34185E] font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                    >
-                      <span>Inspect System Architecture</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-            )}
-
-            {/* CARD 4: Data Insights (Centerpiece Dynamic BI Charts) */}
+            {/* CARD 1: Data Insights (Centerpiece Dynamic BI Charts) */}
             {(filterCategory === 'all' || filterCategory === 'bi') && (
               <div className="group rounded-3xl bg-white border border-[#DFCFF5] hover:border-[#B58FF2] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)] hover:shadow-[0_24px_60px_-15px_rgba(124,77,196,0.24)] hover:scale-[1.018] hover:-translate-y-1.5 transition-all duration-300 ease-out flex flex-col overflow-hidden relative">
                 {/* Top illuminated glow runner on hover */}
@@ -1115,7 +766,383 @@ DIVIDE(
 
                     <button
                       type="button"
-                      onClick={() => setSelectedProject(projects[4])}
+                      onClick={() => setSelectedProject(projects.find((p) => p.id === 'data-insights') || null)}
+                      className="w-full py-2.5 px-4 rounded-xl bg-[#FAF5FE] hover:bg-[#F2E8FC] border border-[#DFCFF5] text-[#34185E] font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                    >
+                      <span>Inspect System Architecture</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+            {/* CARD 2: Monitor-Agro */}
+            {(filterCategory === 'all' || filterCategory === 'backend') && (
+              <div className="group rounded-3xl bg-white border border-[#DFCFF5] hover:border-[#B58FF2] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)] hover:shadow-[0_24px_60px_-15px_rgba(124,77,196,0.24)] hover:scale-[1.018] hover:-translate-y-1.5 transition-all duration-300 ease-out flex flex-col overflow-hidden relative">
+                {/* Top illuminated glow runner on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#8F5FE8]/0 to-transparent group-hover:via-[#8F5FE8]/80 transition-all duration-500 z-10" />
+                
+                {/* Sleek App Interface Mockup: Monitor-Agro */}
+                <div className="bg-gradient-to-b from-[#FAF5FF] to-[#F1E8FB] border-b border-[#E9DEF7] p-5">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#E7D6F8] mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#E57373]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#FFB74D]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#81C784]" />
+                      <span className="font-mono text-xs text-[#5D379B] ml-2 font-medium">agro.telemetry.io/sensors</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E9DDFC] text-[11px] font-mono text-[#542B94]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span>SECTOR_07 LIVE</span>
+                    </div>
+                  </div>
+
+                  {/* Sensor Telemetry Widget Grid */}
+                  <div className="grid grid-cols-3 gap-2.5 mb-3">
+                    <div className="p-3 rounded-xl bg-white/90 border border-[#E8DEF8] shadow-2xs">
+                      <div className="flex items-center gap-1.5 text-[11px] text-[#7A6994] font-medium">
+                        <Droplets className="w-3 h-3 text-[#7C4DC4]" />
+                        <span>Moisture</span>
+                      </div>
+                      <div className="text-base font-bold text-[#2A144E] mt-1 font-mono">68.4%</div>
+                      <div className="text-[10px] text-emerald-600 font-medium">Optimal Band</div>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-white/90 border border-[#E8DEF8] shadow-2xs">
+                      <div className="flex items-center gap-1.5 text-[11px] text-[#7A6994] font-medium">
+                        <Cpu className="w-3 h-3 text-[#7C4DC4]" />
+                        <span>NPK Ratio</span>
+                      </div>
+                      <div className="text-base font-bold text-[#2A144E] mt-1 font-mono">14:8:12</div>
+                      <div className="text-[10px] text-emerald-600 font-medium">Calibrated</div>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-white/90 border border-[#E8DEF8] shadow-2xs">
+                      <div className="flex items-center gap-1.5 text-[11px] text-[#7A6994] font-medium">
+                        <Wind className="w-3 h-3 text-[#7C4DC4]" />
+                        <span>Soil Temp</span>
+                      </div>
+                      <div className="text-base font-bold text-[#2A144E] mt-1 font-mono">22.8°C</div>
+                      <div className="text-[10px] text-emerald-600 font-medium">+0.4° Variance</div>
+                    </div>
+                  </div>
+
+                  {/* Sleek SVG Sensor Trend Line */}
+                  <div className="p-3 rounded-xl bg-white/95 border border-[#E8DEF8] shadow-2xs">
+                    <div className="flex items-center justify-between text-[11px] font-mono text-[#695A82] mb-2 font-mono">
+                      <span>SOIL MOISTURE TIME-SERIES (24H STREAM)</span>
+                      <span className="text-[#7C4DC4] font-semibold">PYTHON ASYNC INGEST</span>
+                    </div>
+                    <svg viewBox="0 0 380 75" className="w-full h-16">
+                      <defs>
+                        <linearGradient id="agroGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#8F5FE8" stopOpacity="0.35" />
+                          <stop offset="100%" stopColor="#8F5FE8" stopOpacity="0.0" />
+                        </linearGradient>
+                      </defs>
+                      <polygon
+                        points="0,55 35,48 70,52 110,38 150,42 190,26 230,30 270,18 310,24 350,14 380,10 380,75 0,75"
+                        fill="url(#agroGrad)"
+                      />
+                      <polyline
+                        points="0,55 35,48 70,52 110,38 150,42 190,26 230,30 270,18 310,24 350,14 380,10"
+                        fill="none"
+                        stroke="#7C4DC4"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                      />
+                      <circle cx="380" cy="10" r="3.5" fill="#3D2472" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="p-7 flex-1 flex flex-col justify-between space-y-5">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-mono font-semibold text-[#7C4DC4] uppercase tracking-wider">
+                        Smart AgTech &amp; Python Backend
+                      </span>
+                      <Sprout className="w-4 h-4 text-[#7C4DC4]" />
+                    </div>
+                    <h3 className="font-serif-heading text-2xl font-semibold text-[#1F1432]">
+                      Monitor-Agro
+                    </h3>
+                    <p className="text-[14.5px] text-[#5C4C74] mt-2 leading-relaxed">
+                      Real-time agronomic telemetry platform with asynchronous Python microservices, IoT ingestion pipelines, and predictive soil health indexes.
+                    </p>
+                  </div>
+
+                  {/* Tags & Explore Button */}
+                  <div className="space-y-4 pt-3 border-t border-[#F0E6FB]">
+                    <div className="flex flex-wrap gap-1.5">
+                      {['Python', 'FastAPI', 'IoT Stream', 'PostgreSQL'].map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-0.5 rounded-full bg-[#FAF5FE] border border-[#E3D4F7] text-[11px] font-mono text-[#583391]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-2">
+                      <a
+                        href="https://github.com/Oliv-Patrik/monitor-agro"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 py-2.5 px-4 rounded-xl bg-[#FAF5FE] hover:bg-[#F2E8FC] border border-[#DFCFF5] text-[#34185E] font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                        title="Open GitHub Repository (Monitor-Agro)"
+                      >
+                        <span>Inspect System Architecture</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProject(projects.find((p) => p.id === 'monitor-agro') || null)}
+                        className="py-2.5 px-3 rounded-xl bg-[#FAF5FE] hover:bg-[#F2E8FC] border border-[#DFCFF5] text-[#34185E] font-medium text-xs flex items-center justify-center transition-colors cursor-pointer"
+                        title="View Architecture Blueprint & Code Kata"
+                      >
+                        <Code2 className="w-3.5 h-3.5 text-[#7C4DC4]" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+            {/* CARD 3: ConversaFina */}
+            {(filterCategory === 'all' || filterCategory === 'backend') && (
+              <div className="group rounded-3xl bg-white border border-[#DFCFF5] hover:border-[#B58FF2] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)] hover:shadow-[0_24px_60px_-15px_rgba(124,77,196,0.24)] hover:scale-[1.018] hover:-translate-y-1.5 transition-all duration-300 ease-out flex flex-col overflow-hidden relative">
+                {/* Top illuminated glow runner on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#8F5FE8]/0 to-transparent group-hover:via-[#8F5FE8]/80 transition-all duration-500 z-10" />
+                
+                {/* Sleek App Interface Mockup: ConversaFina */}
+                <div className="bg-gradient-to-b from-[#FAF5FF] to-[#F1E8FB] border-b border-[#E9DEF7] p-5">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#E7D6F8] mb-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-lg bg-[#3D2472] text-white flex items-center justify-center">
+                        <SigilRune variant="minimal" size={14} />
+                      </div>
+                      <span className="font-mono text-xs text-[#5D379B] font-semibold">ConversaFina // AI Agent</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setChatScenario((prev) => (prev === 0 ? 1 : 0))}
+                        className="px-2.5 py-0.5 rounded-full bg-[#E5D5F9] hover:bg-[#D9C4F5] text-[10.5px] font-mono text-[#4A2487] transition-colors cursor-pointer"
+                      >
+                        Cycle Prompt
+                      </button>
+                      <span className="text-[11px] font-mono text-[#7B6D94]">42 tok/s</span>
+                    </div>
+                  </div>
+
+                  {/* Chat Message Flow */}
+                  <div className="space-y-2.5 min-h-[148px] flex flex-col justify-end">
+                    {/* User Message */}
+                    <div className="flex justify-end">
+                      <div className="max-w-[85%] p-2.5 rounded-2xl rounded-tr-xs bg-[#3E2473] text-white text-xs leading-relaxed shadow-xs">
+                        {chatScenarios[chatScenario].user}
+                      </div>
+                    </div>
+
+                    {/* Assistant Response with Grimoire Tag */}
+                    <div className="flex justify-start items-start gap-2">
+                      <div className="w-6 h-6 rounded-full bg-[#8F5FE8] text-white flex items-center justify-center shrink-0 mt-1 shadow-xs">
+                        <Sparkles className="w-3 h-3" />
+                      </div>
+                      <div className="max-w-[88%] p-3 rounded-2xl rounded-tl-xs bg-white border border-[#E5D7F8] text-[#291746] text-xs leading-relaxed shadow-xs">
+                        <div className="text-[10px] font-mono text-[#7C4DC4] font-semibold mb-1">
+                          {chatScenarios[chatScenario].tag}
+                        </div>
+                        {chatScenarios[chatScenario].bot}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Chat Input Bar */}
+                  <div className="mt-3 flex items-center gap-2 p-1.5 rounded-xl bg-white border border-[#E3D3F7]">
+                    <input
+                      type="text"
+                      readOnly
+                      value="Type command or DAX query..."
+                      className="flex-1 bg-transparent px-2 text-xs text-[#8A7B9F] font-mono focus:outline-none"
+                    />
+                    <button
+                      type="button"
+                      className="w-7 h-7 rounded-lg bg-[#7C4DC4] text-white flex items-center justify-center shadow-xs cursor-pointer"
+                    >
+                      <Send className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="p-7 flex-1 flex flex-col justify-between space-y-5">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-mono font-semibold text-[#7C4DC4] uppercase tracking-wider">
+                        Conversational Engine &amp; APIs
+                      </span>
+                      <MessageSquareCode className="w-4 h-4 text-[#7C4DC4]" />
+                    </div>
+                    <h3 className="font-serif-heading text-2xl font-semibold text-[#1F1432]">
+                      ConversaFina
+                    </h3>
+                    <p className="text-[14.5px] text-[#5C4C74] mt-2 leading-relaxed">
+                      Sleek conversational assistant bridging user queries to backend REST APIs, automated invoice validation, and intelligent data summaries.
+                    </p>
+                  </div>
+
+                  {/* Tags & Explore Button */}
+                  <div className="space-y-4 pt-3 border-t border-[#F0E6FB]">
+                    <div className="flex flex-wrap gap-1.5">
+                      {['Python', 'REST APIs', 'Semantic Parsing', 'WebSockets'].map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-0.5 rounded-full bg-[#FAF5FE] border border-[#E3D4F7] text-[11px] font-mono text-[#583391]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-2">
+                      <a
+                        href="https://github.com/Oliv-Patrik/conversafina"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 py-2.5 px-4 rounded-xl bg-[#FAF5FE] hover:bg-[#F2E8FC] border border-[#DFCFF5] text-[#34185E] font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                        title="Open GitHub Repository (ConversaFina)"
+                      >
+                        <span>Inspect System Architecture</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProject(projects.find((p) => p.id === 'conversafina') || null)}
+                        className="py-2.5 px-3 rounded-xl bg-[#FAF5FE] hover:bg-[#F2E8FC] border border-[#DFCFF5] text-[#34185E] font-medium text-xs flex items-center justify-center transition-colors cursor-pointer"
+                        title="View Architecture Blueprint & Code Kata"
+                      >
+                        <Code2 className="w-3.5 h-3.5 text-[#7C4DC4]" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+            {/* CARD 4: Calculadora EcoTrip */}
+            {(filterCategory === 'all' || filterCategory === 'backend') && (
+              <div className="group rounded-3xl bg-white border border-[#DFCFF5] hover:border-[#B58FF2] shadow-[0_12px_36px_-16px_rgba(61,36,114,0.08)] hover:shadow-[0_24px_60px_-15px_rgba(124,77,196,0.24)] hover:scale-[1.018] hover:-translate-y-1.5 transition-all duration-300 ease-out flex flex-col overflow-hidden relative">
+                {/* Top illuminated glow runner on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#8F5FE8]/0 to-transparent group-hover:via-[#8F5FE8]/80 transition-all duration-500 z-10" />
+                
+                {/* Sleek App Interface Mockup: Calculadora EcoTrip */}
+                <div className="bg-gradient-to-b from-[#FAF5FF] to-[#F1E8FB] border-b border-[#E9DEF7] p-5">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#E7D6F8] mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#E57373]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#FFB74D]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#81C784]" />
+                      <span className="font-mono text-xs text-[#5D379B] ml-2 font-medium">ecotrip.calculator.app</span>
+                    </div>
+                    <span className="text-[11px] font-mono text-[#6A439E] font-semibold">GREEN_ALGO_V2</span>
+                  </div>
+
+                  {/* Interactive Distance & Vehicle Simulator */}
+                  <div className="p-3.5 rounded-2xl bg-white/95 border border-[#E7DCF7] space-y-3.5 shadow-2xs">
+                    {/* Distance Slider */}
+                    <div>
+                      <div className="flex justify-between text-xs font-mono text-[#5A3888] mb-1">
+                        <span>Trip Distance:</span>
+                        <strong className="text-[#2C1450] font-bold">{distanceKm} km</strong>
+                      </div>
+                      <input
+                        type="range"
+                        min="50"
+                        max="1000"
+                        step="10"
+                        value={distanceKm}
+                        onChange={(e) => setDistanceKm(Number(e.target.value))}
+                        className="w-full accent-[#7C4DC4] cursor-pointer"
+                      />
+                    </div>
+
+                    {/* Powertrain Selector */}
+                    <div className="flex items-center justify-between gap-2 text-xs">
+                      {(['combustion', 'hybrid', 'electric'] as const).map((mode) => (
+                        <button
+                          key={mode}
+                          type="button"
+                          onClick={() => setVehicleType(mode)}
+                          className={`flex-1 py-1.5 rounded-lg font-mono text-[11px] uppercase transition-colors cursor-pointer ${
+                            vehicleType === mode
+                              ? 'bg-[#3D2472] text-white font-semibold'
+                              : 'bg-[#F2EAFD] text-[#553386] hover:bg-[#E9DEF9]'
+                          }`}
+                        >
+                          {mode}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Live Output Metrics */}
+                    <div className="grid grid-cols-3 gap-2 pt-1">
+                      <div className="p-2 rounded-xl bg-[#FAF6FE] border border-[#ECE0FA] text-center">
+                        <div className="text-[10px] text-[#7C6E94] font-mono">ESTIMATED CO2</div>
+                        <div className="text-sm font-bold text-[#2A144E] font-mono mt-0.5">{totalCo2} kg</div>
+                      </div>
+                      <div className="p-2 rounded-xl bg-[#FAF6FE] border border-[#ECE0FA] text-center">
+                        <div className="text-[10px] text-[#7C6E94] font-mono">SAVINGS</div>
+                        <div className="text-sm font-bold text-emerald-700 font-mono mt-0.5">-{savingsVsCombustion} kg</div>
+                      </div>
+                      <div className="p-2 rounded-xl bg-[#FAF6FE] border border-[#ECE0FA] text-center">
+                        <div className="text-[10px] text-[#7C6E94] font-mono">TREE EQUIV.</div>
+                        <div className="text-sm font-bold text-[#6D3CAE] font-mono mt-0.5">+{treesEquivalent}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="p-7 flex-1 flex flex-col justify-between space-y-5">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-mono font-semibold text-[#7C4DC4] uppercase tracking-wider">
+                        Carbon Footprint &amp; Route Telemetry
+                      </span>
+                      <Gauge className="w-4 h-4 text-[#7C4DC4]" />
+                    </div>
+                    <h3 className="font-serif-heading text-2xl font-semibold text-[#1F1432]">
+                      Calculadora EcoTrip
+                    </h3>
+                    <p className="text-[14.5px] text-[#5C4C74] mt-2 leading-relaxed">
+                      Interactive carbon estimation engine modeling powertrain efficiencies, multimodal transit alternatives, and quantifiable environmental impact.
+                    </p>
+                  </div>
+
+                  {/* Tags & Explore Button */}
+                  <div className="space-y-4 pt-3 border-t border-[#F0E6FB]">
+                    <div className="flex flex-wrap gap-1.5">
+                      {['TypeScript', 'Algorithms', 'Carbon Modeling', 'Tailwind'].map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-0.5 rounded-full bg-[#FAF5FE] border border-[#E3D4F7] text-[11px] font-mono text-[#583391]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(projects.find((p) => p.id === 'calculadora-ecotrip') || null)}
                       className="w-full py-2.5 px-4 rounded-xl bg-[#FAF5FE] hover:bg-[#F2E8FC] border border-[#DFCFF5] text-[#34185E] font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
                     >
                       <span>Inspect System Architecture</span>

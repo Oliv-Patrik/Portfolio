@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SigilRune } from './SigilRune';
 import { ContactForm } from './ContactForm';
-import { Github, Linkedin, Mail, Copy, Check, ArrowUp, Send, Heart, MapPin, Sparkles } from 'lucide-react';
+import { Github, Linkedin, Mail, Copy, Check, ArrowUp, Send, Heart, MapPin, Sparkles, FileDown } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -91,14 +91,27 @@ export const Footer: React.FC = () => {
               </button>
             </div>
 
-            {/* Social Connection Icons Row */}
-            <div className="flex items-center gap-3 pt-1">
+            {/* Download CV button */}
+            <a
+              href="/cv-patrik-de-oliveira.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="cv-patrik-de-oliveira.pdf"
+              className="w-full py-3 px-4 rounded-2xl bg-[#2B164A] hover:bg-[#391E60] border border-[#522E8A] hover:border-[#8F5FE8] text-[#E0D2F8] hover:text-white transition-all flex items-center justify-center gap-2.5 text-xs font-mono group shadow-xs"
+              title="Download Curriculum Vitae (PDF)"
+            >
+              <FileDown className="w-4 h-4 text-[#C1A8EC] group-hover:scale-110 transition-transform" />
+              <span className="font-medium tracking-wide">Download Curriculum Vitae (CV)</span>
+            </a>
+
+            {/* Social Connection Icons Row - Equal sized GitHub and LinkedIn */}
+            <div className="grid grid-cols-2 gap-3 pt-1">
               {/* GitHub: github.com/Oliv-Patrik */}
               <a
                 href="https://github.com/Oliv-Patrik"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 p-3 rounded-2xl bg-[#2B164A] hover:bg-[#391E60] border border-[#482877] hover:border-[#8050C9] text-[#E0D2F8] hover:text-white transition-all flex items-center justify-center gap-2 text-xs font-mono group shadow-xs"
+                className="p-3 rounded-2xl bg-[#2B164A] hover:bg-[#391E60] border border-[#482877] hover:border-[#8050C9] text-[#E0D2F8] hover:text-white transition-all flex items-center justify-center gap-2 text-xs font-mono group shadow-xs"
               >
                 <Github className="w-4 h-4 text-[#C1A8EC] group-hover:scale-110 transition-transform" />
                 <span className="truncate">github.com/Oliv-Patrik</span>
@@ -110,20 +123,11 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="p-3 rounded-2xl bg-[#2B164A] hover:bg-[#391E60] border border-[#482877] hover:border-[#8050C9] text-[#E0D2F8] hover:text-white transition-all flex items-center justify-center group shadow-xs"
+                className="p-3 rounded-2xl bg-[#2B164A] hover:bg-[#391E60] border border-[#482877] hover:border-[#8050C9] text-[#E0D2F8] hover:text-white transition-all flex items-center justify-center gap-2 text-xs font-mono group shadow-xs"
                 title="LinkedIn Profile"
               >
                 <Linkedin className="w-4 h-4 text-[#C1A8EC] group-hover:scale-110 transition-transform" />
-              </a>
-
-              {/* Email Icon */}
-              <a
-                href={`mailto:${emailAddress}`}
-                aria-label="Send Email"
-                className="p-3 rounded-2xl bg-[#2B164A] hover:bg-[#391E60] border border-[#482877] hover:border-[#8050C9] text-[#E0D2F8] hover:text-white transition-all flex items-center justify-center group shadow-xs"
-                title="Send Email"
-              >
-                <Mail className="w-4 h-4 text-[#C1A8EC] group-hover:scale-110 transition-transform" />
+                <span className="truncate">in/oliveira-patrik</span>
               </a>
             </div>
 

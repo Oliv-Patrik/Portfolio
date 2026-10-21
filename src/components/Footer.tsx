@@ -5,7 +5,7 @@ import { Github, Linkedin, Mail, Copy, Check, ArrowUp, Send, Heart, MapPin, Spar
 
 export const Footer: React.FC = () => {
   const [copied, setCopied] = useState(false);
-  const emailAddress = 'patrikoli49@gmail.com';
+  const emailAddress = 'patrik.lopes.oliv@gmail.com';
 
   const copyEmail = () => {
     navigator.clipboard.writeText(emailAddress);
